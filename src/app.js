@@ -8,8 +8,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
 const repositories = [];
 
+/**
+ * Neste projeto sera feito um CRUD completo de um sistema de repositorios
+ */
+
+
+ // Requisito de leitura dos repositorios - C. - READ - U. D.
 app.get("/repositories", (request, response) => {
   // TODO
   const { techs } = request.query;
@@ -21,6 +28,7 @@ app.get("/repositories", (request, response) => {
   return response.json(results);
 });
 
+// Requisito para a criação de repositório - CREATE - R. U. D.
 app.post("/repositories", (request, response) => {
   // TODO
 
@@ -39,6 +47,7 @@ app.post("/repositories", (request, response) => {
   return response.json(repository);
 });
 
+// Requisito para atualização de um repositorio especificado - C. R. - UPDATE - D.
 app.put("/repositories/:id", (request, response) => {
   // TODO
   const { id } = request.params;
@@ -66,6 +75,8 @@ app.put("/repositories/:id", (request, response) => {
 
 });
 
+
+// Requisito para a remoção de um repositorio especificado - C. R. U. - DELETE
 app.delete("/repositories/:id", (request, response) => {
   // TODO
 
@@ -82,6 +93,8 @@ app.delete("/repositories/:id", (request, response) => {
   return response.status(204).send();
 });
 
+
+// Requisito que atualiza o numero de likes para +1 de um repositorio especificado - C. R. - UPDATE - D.
 app.post("/repositories/:id/like", (request, response) => {
   // TODO
   const { id } = request.params;
@@ -97,5 +110,6 @@ app.post("/repositories/:id/like", (request, response) => {
   return response.status(200).json(repository);
 
 });
+
 
 module.exports = app;
